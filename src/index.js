@@ -5,12 +5,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
 import BranchPage from './pages/BranchPage';
 import './index.css';
+import RatingsPage from './pages/RatingsPage';
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="branch" element={<BranchPage/>} index />
+        <Route path="ratings" element={<RatingsPage/>}/>
       </Route>
     </Routes>
   </BrowserRouter>,
