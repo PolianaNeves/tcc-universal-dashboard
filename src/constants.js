@@ -126,3 +126,24 @@ export const yearFilterMenus = {
 };
 
 export const yearHeaders = ["Ano", "Reviews"];
+
+export const frequenciesFilterMenus = {
+  selectList: [
+    {
+      id: "label-selection",
+      placeholder: "Selecione o tipo de avaliação desejada...",
+      options: [
+        {label: "Positiva", value: "positive"},
+        {label: "Negativa", value: "negative"}
+      ]
+    }
+  ],
+  searchList: [
+    {
+      id: "top_freq_terms",
+      placeholder: "Quantidade de termos a buscar..."
+    }
+  ]
+};
+
+export const frequenciesTableHeaders = ["Termo", "Frequência"];

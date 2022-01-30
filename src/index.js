@@ -7,6 +7,7 @@ import BranchPage from './pages/BranchPage';
 import './index.css';
 import RatingsPage from './pages/RatingsPage';
 import YearPage from './pages/YearPage';
+import FrequenciesPage from './pages/FrequenciesPage';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -15,6 +16,7 @@ ReactDOM.render(
         <Route path="branch" element={<BranchPage/>} index />
         <Route path="ratings" element={<RatingsPage/>}/>
         <Route path="year" element={<YearPage/>}/>
+        <Route path="frequencies" element={<FrequenciesPage/>}/>
       </Route>
     </Routes>
   </BrowserRouter>,
