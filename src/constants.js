@@ -147,3 +147,39 @@ export const frequenciesFilterMenus = {
 };
 
 export const frequenciesTableHeaders = ["Termo", "Frequência"];
+
+export const attractionsOptionsChart = {
+  title: "Qtd. Reviews x Atração",
+  chartArea: { width: "70%" },
+  hAxis: {
+    title: "Atrações",
+    minValue: 0,
+  },
+  vAxis: {
+    title: "Quantidade de Reviews",
+  },
+};
+
+export const attractionsFilterMenus = {
+  selectList: [
+    {
+      id: "attractions-selection",
+      placeholder: "Selecione a filial desejada...",
+      options: [
+        {label: "Universal Studios Florida", value: "florida"},
+        {label: "Universal Studios Singapore", value: "singapore"},
+        {label: "Universal Studios Japan", value: "japan"}
+      ]
+    },
+    {
+      id: "label-selection",
+      placeholder: "Selecione o tipo de avaliação desejada...",
+      options: [
+        {label: "Positiva", value: "pos"},
+        {label: "Negativa", value: "neg"}
+      ]
+    }
+  ]
+};
+
+export const attractionsHeaders = ["Reviews", "Atração"];

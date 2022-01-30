@@ -8,6 +8,7 @@ import './index.css';
 import RatingsPage from './pages/RatingsPage';
 import YearPage from './pages/YearPage';
 import FrequenciesPage from './pages/FrequenciesPage';
+import AttractionsPage from './pages/AttractionsPage';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -17,6 +18,7 @@ ReactDOM.render(
         <Route path="ratings" element={<RatingsPage/>}/>
         <Route path="year" element={<YearPage/>}/>
         <Route path="frequencies" element={<FrequenciesPage/>}/>
+        <Route path="attractions" element={<AttractionsPage/>}/>
       </Route>
     </Routes>
   </BrowserRouter>,
