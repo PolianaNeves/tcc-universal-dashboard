@@ -10,7 +10,7 @@ ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="branch" element={<BranchPage/>} index/>
+        <Route path="branch" element={<BranchPage/>} index />
       </Route>
     </Routes>
   </BrowserRouter>,
