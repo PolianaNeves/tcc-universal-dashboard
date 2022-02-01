@@ -1,10 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import './NavBar.css'
 
 export default function NavBar(props) {
   return (
     <>
-      <nav>
+      <nav className='navbar'>
         <Link to="/branch">Branch</Link>
         <Link to="/ratings">Ratings</Link>
         <Link to="/year">Year</Link>
