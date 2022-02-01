@@ -183,3 +183,25 @@ export const attractionsFilterMenus = {
 };
 
 export const attractionsHeaders = ["Reviews", "Atração"];
+
+export const timeSeriesFilterMenus = {
+  selectList: [
+    {
+      id: "timeseries-selection",
+      placeholder: "Selecione a filial desejada...",
+      options: [
+        {label: "Universal Studios Florida", value: "florida"},
+        {label: "Universal Studios Singapore", value: "singapore"},
+        {label: "Universal Studios Japan", value: "japan"}
+      ]
+    },
+    {
+      id: "label-selection",
+      placeholder: "Selecione o tipo de avaliação desejada...",
+      options: [
+        {label: "Positiva", value: "pos"},
+        {label: "Negativa", value: "neg"}
+      ]
+    }
+  ]
+};

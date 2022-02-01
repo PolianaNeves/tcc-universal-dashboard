@@ -9,6 +9,7 @@ import RatingsPage from './pages/RatingsPage';
 import YearPage from './pages/YearPage';
 import FrequenciesPage from './pages/FrequenciesPage';
 import AttractionsPage from './pages/AttractionsPage';
+import TimeSeriesPage from './pages/TimeSeriesPage';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -19,6 +20,7 @@ ReactDOM.render(
         <Route path="year" element={<YearPage/>}/>
         <Route path="frequencies" element={<FrequenciesPage/>}/>
         <Route path="attractions" element={<AttractionsPage/>}/>
+        <Route path="timeseries" element={<TimeSeriesPage/>}/>
       </Route>
     </Routes>
   </BrowserRouter>,
