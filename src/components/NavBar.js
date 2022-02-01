@@ -11,6 +11,7 @@ export default function NavBar(props) {
         <Link to="/timeseries">Time Series</Link>
         <Link to="/frequencies">Frequencies</Link>
         <Link to="/attractions">Attractions</Link>
+        <Link to="/wordcloud">Nuvem de palavras</Link>
       </nav>
     </>
   );

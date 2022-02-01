@@ -10,6 +10,7 @@ import YearPage from './pages/YearPage';
 import FrequenciesPage from './pages/FrequenciesPage';
 import AttractionsPage from './pages/AttractionsPage';
 import TimeSeriesPage from './pages/TimeSeriesPage';
+import WordcloudPage from './pages/WordcloudPage';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -21,6 +22,7 @@ ReactDOM.render(
         <Route path="frequencies" element={<FrequenciesPage/>}/>
         <Route path="attractions" element={<AttractionsPage/>}/>
         <Route path="timeseries" element={<TimeSeriesPage/>}/>
+        <Route path="wordcloud" element={<WordcloudPage/>}/>
       </Route>
     </Routes>
   </BrowserRouter>,
