@@ -91,12 +91,18 @@ export default function WordcloudPage() {
   return (
     <>
       <h1 className="page-title">WordcloudPage</h1>
-      <div className='section-filter'>
+      <div className="section-filter">
         <FilterMenu selectList={wordcloudFilterMenus.selectList} />
-        <button className='filter-btn' onClick={() => handleFilter()}>Filtrar</button>
-        <button className='filter-btn' onClick={() => clearFilters()}>Limpar filtros</button>
+        <button className="filter-btn" onClick={() => handleFilter()}>
+          Filtrar
+        </button>
+        <button className="filter-btn" onClick={() => clearFilters()}>
+          Limpar filtros
+        </button>
       </div>
-      {src && <img alt="nuvem-de-palavras" src={src} />}
+      <div className="pre-charts">
+        {src && <img alt="nuvem-de-palavras" src={src} />}
+      </div>
     </>
   );
 }

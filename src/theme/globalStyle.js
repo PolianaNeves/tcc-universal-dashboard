@@ -48,6 +48,12 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 15px;
     text-align: center;
   }
+
+  .pre-charts{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+  }
 `;
 
 export default GlobalStyle;
