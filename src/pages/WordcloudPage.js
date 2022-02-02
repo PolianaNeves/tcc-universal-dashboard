@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import FilterMenu from "../components/FilterMenu";
 import { wordcloudFilterMenus } from "../constants";
@@ -90,10 +90,12 @@ export default function WordcloudPage() {
 
   return (
     <>
-      <h1>WordcloudPage</h1>
-      <FilterMenu selectList={wordcloudFilterMenus.selectList} />
-      <button onClick={() => handleFilter()}>Filtrar</button>
-      <button onClick={() => clearFilters()}>Limpar filtros</button>
+      <h1 className="page-title">WordcloudPage</h1>
+      <div className='section-filter'>
+        <FilterMenu selectList={wordcloudFilterMenus.selectList} />
+        <button className='filter-btn' onClick={() => handleFilter()}>Filtrar</button>
+        <button className='filter-btn' onClick={() => clearFilters()}>Limpar filtros</button>
+      </div>
       {src && <img alt="nuvem-de-palavras" src={src} />}
     </>
   );

@@ -93,10 +93,12 @@ export default function TimeSeriesPage(props) {
 
   return (
     <>
-      <h1>TimeSeriesPage</h1>
-      <FilterMenu selectList={timeSeriesFilterMenus.selectList} />
-      <button onClick={() => handleFilter()}>Filtrar</button>
-      <button onClick={() => clearFilters()}>Limpar filtros</button>
+      <h1 className="page-title">TimeSeriesPage</h1>
+      <div className='section-filter'>
+        <FilterMenu selectList={timeSeriesFilterMenus.selectList} />
+        <button className='filter-btn' onClick={() => handleFilter()}>Filtrar</button>
+        <button className='filter-btn' onClick={() => clearFilters()}>Limpar filtros</button>
+      </div>
       {src && <img alt="time-series" src={src} />}
       {detailsSrc && <img alt="time-series-details" src={detailsSrc} />}
     </>

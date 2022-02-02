@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import BarChart from "../components/BarChart";
 import FilterMenu from "../components/FilterMenu";
-import { ratingsOptionsChart, ratingsFilterMenus, ratingsHeaders } from "../constants";
+import {
+  ratingsOptionsChart,
+  ratingsFilterMenus,
+  ratingsHeaders,
+} from "../constants";
 import api from "../services/api";
 
 export default function RatingsPage(props) {
@@ -17,12 +21,12 @@ export default function RatingsPage(props) {
         console.log(error);
       });
   };
-  
+
   useEffect(() => {
-    if(chartData == null){
+    if (chartData == null) {
       getDefaultData();
     }
-  }, [chartData])
+  }, [chartData]);
 
   const callRatingsServices = async (chosenRating, chosenLabel) => {
     const isRatingSelected =
@@ -71,18 +75,21 @@ export default function RatingsPage(props) {
     var labelElement = document.getElementById(
       ratingsFilterMenus.selectList[1].id
     );
-    callRatingsServices(
-      ratingsElement.value,
-      labelElement.value
-    );
+    callRatingsServices(ratingsElement.value, labelElement.value);
   };
 
   return (
     <>
-      <h1>Ratings page</h1>
-      <FilterMenu selectList={ratingsFilterMenus.selectList} />
-      <button onClick={() => handleFilter()}>Filtrar por Pontuação</button>
-      <button onClick={() => getDefaultData()}>Limpar Filtros</button>
+      <h1 className='page-title'>Ratings page</h1>
+      <div className='section-filter'>
+        <FilterMenu selectList={ratingsFilterMenus.selectList} />
+        <button className="filter-btn" onClick={() => handleFilter()}>
+          Filtrar por Pontuação
+        </button>
+        <button className="filter-btn" onClick={() => getDefaultData()}>
+          Limpar Filtros
+        </button>
+      </div>
       {chartData && (
         <BarChart
           data={chartData}

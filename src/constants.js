@@ -1,8 +1,8 @@
 export const branchOptionsChart = {
-  title: "Qtd. Reviews x Filial",
+  title: "Quantidade de Avaliações x Filial",
   chartArea: { width: "50%" },
   hAxis: {
-    title: "Quantidade de Reviews",
+    title: "Avaliações",
     minValue: 0,
   },
   vAxis: {
@@ -32,18 +32,18 @@ export const branchFilterMenus = {
   ]
 };
 
-export const branchHeaders = ["Branches", "Reviews"];
+export const branchHeaders = ["Filiais", "Avaliações"];
 
 
 export const ratingsOptionsChart = {
-  title: "Qtd. Reviews x Pontuação da Avaliação",
+  title: "Quantidade x Pontuação da Avaliação",
   chartArea: { width: "50%" },
   hAxis: {
-    title: "Quantidade de Reviews",
+    title: "Avaliações",
     minValue: 0,
   },
   vAxis: {
-    title: "Pontuação da Avaliação",
+    title: "Pontuação",
   },
 };
 
@@ -71,17 +71,17 @@ export const ratingsFilterMenus = {
   ]
 };
 
-export const ratingsHeaders = ["Pontuação", "Reviews"];
+export const ratingsHeaders = ["Pontuação", "Avaliações"];
 
 export const yearOptionsChart = {
-  title: "Qtd. Reviews x Ano da Avaliação",
+  title: "Quantidade de Avaliações x Ano da Avaliação",
   chartArea: { width: "50%" },
   hAxis: {
-    title: "Quantidade de Reviews",
+    title: "Avaliações",
     minValue: 0,
   },
   vAxis: {
-    title: "Ano da Avaliação",
+    title: "Ano",
   },
 };
 
@@ -125,7 +125,7 @@ export const yearFilterMenus = {
   ]
 };
 
-export const yearHeaders = ["Ano", "Reviews"];
+export const yearHeaders = ["Ano", "Avaliações"];
 
 export const frequenciesFilterMenus = {
   selectList: [
@@ -149,14 +149,14 @@ export const frequenciesFilterMenus = {
 export const frequenciesTableHeaders = ["Termo", "Frequência"];
 
 export const attractionsOptionsChart = {
-  title: "Qtd. Reviews x Atração",
-  chartArea: { width: "70%" },
+  title: "Quantidade de Avaliações x Atração",
+  chartArea: { width: "50%" },
   hAxis: {
     title: "Atrações",
     minValue: 0,
   },
   vAxis: {
-    title: "Quantidade de Reviews",
+    title: "Avaliações",
   },
 };
 
@@ -182,7 +182,7 @@ export const attractionsFilterMenus = {
   ]
 };
 
-export const attractionsHeaders = ["Reviews", "Atração"];
+export const attractionsHeaders = ["Avaliações", "Atração"];
 
 export const timeSeriesFilterMenus = {
   selectList: [

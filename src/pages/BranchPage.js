@@ -83,26 +83,24 @@ export default function BranchPage(props) {
   };
 
   return (
-    <section className="branch-section">
-      <h1 className="branch-page-title">Branch page</h1>
-      <div className="branch-filter">
+    <>
+      <h1 className="page-title">Branch page</h1>
+      <div className="section-filter">
         <FilterMenu selectList={branchFilterMenus.selectList} />
-        <button className="btn-branch" onClick={() => handleFilter()}>
+        <button className="filter-btn" onClick={() => handleFilter()}>
           Filtrar por filial
         </button>
-        <button className="btn-branch" onClick={() => getDefaultData()}>
+        <button className="filter-btn" onClick={() => getDefaultData()}>
           Limpar Filtros
         </button>
       </div>
       {chartData && (
-        <div className='branch-chart'>
-          <BarChart
-            data={chartData}
-            options={branchOptionsChart}
-            headers={branchHeaders}
-          />
-        </div>
+        <BarChart
+          data={chartData}
+          options={branchOptionsChart}
+          headers={branchHeaders}
+        />
       )}
-    </section>
+    </>
   );
 }

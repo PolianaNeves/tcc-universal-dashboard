@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FilterMenu from "../components/FilterMenu";
-import Table from '../components/Table';
+import Table from "../components/Table";
 import { frequenciesFilterMenus, frequenciesTableHeaders } from "../constants";
 import api from "../services/api";
 
@@ -67,14 +67,17 @@ export default function FrequenciesPage(props) {
 
   return (
     <>
-      <h1>Frequencies page</h1>
-      <FilterMenu
-        selectList={frequenciesFilterMenus.selectList}
-        searchList={frequenciesFilterMenus.searchList}
-      />
-      <button onClick={() => handleFilter()}>Filtrar termos</button>
-      <button onClick={() => getDefaultData()}>Limpar Filtros</button>
-      <Table headers={frequenciesTableHeaders} rows={tableData}/>
+      <h1 className="page-title">Frequencies page</h1>
+      <div className='section-filter'>
+        <FilterMenu
+          selectList={frequenciesFilterMenus.selectList}
+          searchList={frequenciesFilterMenus.searchList}
+        />
+        <button className='filter-btn' onClick={() => handleFilter()}>Filtrar termos</button>
+        <button className='filter-btn' onClick={() => getDefaultData()}>Limpar Filtros</button>
+      </div>
+
+      <Table headers={frequenciesTableHeaders} rows={tableData} />
     </>
   );
 }

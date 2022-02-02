@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ColumnChart from "../components/ColumnChart";
 import FilterMenu from "../components/FilterMenu";
-import { attractionsFilterMenus, attractionsHeaders, attractionsOptionsChart } from "../constants";
+import {
+  attractionsFilterMenus,
+  attractionsHeaders,
+  attractionsOptionsChart,
+} from "../constants";
 import api from "../services/api";
 
 export default function AttractionsPage(props) {
@@ -33,7 +37,7 @@ export default function AttractionsPage(props) {
         .catch((error) => {
           console.log(error);
         });
-    } 
+    }
   };
 
   const handleFilter = () => {
@@ -43,17 +47,16 @@ export default function AttractionsPage(props) {
     var labelElement = document.getElementById(
       attractionsFilterMenus.selectList[1].id
     );
-    callAttractionsServices(
-      branchElement.value,
-      labelElement.value
-    );
+    callAttractionsServices(branchElement.value, labelElement.value);
   };
 
   return (
     <>
-      <h1>Attractions page</h1>
-      <FilterMenu selectList={attractionsFilterMenus.selectList} />
-      <button onClick={() => handleFilter()}>Filtrar</button>
+      <h1 className="page-title">Attractions page</h1>
+      <div className='section-filter'>
+        <FilterMenu selectList={attractionsFilterMenus.selectList} />
+        <button className='filter-btn' onClick={() => handleFilter()}>Filtrar atrações</button>
+      </div>
       {chartData && (
         <ColumnChart
           data={chartData}

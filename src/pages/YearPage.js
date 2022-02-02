@@ -17,12 +17,12 @@ export default function YearPage(props) {
         console.log(error);
       });
   };
-  
+
   useEffect(() => {
-    if(chartData == null){
+    if (chartData == null) {
       getDefaultData();
     }
-  }, [chartData])
+  }, [chartData]);
 
   const callYearServices = async (chosenYear, chosenLabel) => {
     const isYearSelected =
@@ -65,24 +65,21 @@ export default function YearPage(props) {
   };
 
   const handleFilter = () => {
-    var yearElement = document.getElementById(
-      yearFilterMenus.selectList[0].id
-    );
+    var yearElement = document.getElementById(yearFilterMenus.selectList[0].id);
     var labelElement = document.getElementById(
       yearFilterMenus.selectList[1].id
     );
-    callYearServices(
-      yearElement.value,
-      labelElement.value
-    );
+    callYearServices(yearElement.value, labelElement.value);
   };
 
   return (
     <>
-      <h1>Year page</h1>
-      <FilterMenu selectList={yearFilterMenus.selectList} />
-      <button onClick={() => handleFilter()}>Filtrar por Ano</button>
-      <button onClick={() => getDefaultData()}>Limpar Filtros</button>
+      <h1 className="page-title">Year page</h1>
+      <div className="section-filter">
+        <FilterMenu selectList={yearFilterMenus.selectList} />
+        <button className='filter-btn' onClick={() => handleFilter()}>Filtrar por Ano</button>
+        <button className='filter-btn' onClick={() => getDefaultData()}>Limpar Filtros</button>
+      </div>
       {chartData && (
         <BarChart
           data={chartData}
