@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import BarChart from "../components/BarChart";
 import FilterMenu from "../components/FilterMenu";
-import { branchOptionsChart, branchFilterMenus, branchHeaders } from "../constants";
+import {
+  branchOptionsChart,
+  branchFilterMenus,
+  branchHeaders,
+} from "../constants";
 import api from "../services/api";
+import "./BranchPage.css";
 
 export default function BranchPage(props) {
   const [chartData, setChartData] = useState(null);
@@ -17,12 +22,12 @@ export default function BranchPage(props) {
         console.log(error);
       });
   };
-  
+
   useEffect(() => {
-    if(chartData == null){
+    if (chartData == null) {
       getDefaultData();
     }
-  }, [chartData])
+  }, [chartData]);
 
   const callBranchServices = async (chosenBranch, chosenLabel) => {
     const isBranchSelected =
@@ -78,18 +83,26 @@ export default function BranchPage(props) {
   };
 
   return (
-    <>
-      <h1>Branch page</h1>
-      <FilterMenu selectList={branchFilterMenus.selectList} />
-      <button onClick={() => handleFilter()}>Filtrar por filial</button>
-      <button onClick={() => getDefaultData()}>Limpar Filtros</button>
+    <section className="branch-section">
+      <h1 className="branch-page-title">Branch page</h1>
+      <div className="branch-filter">
+        <FilterMenu selectList={branchFilterMenus.selectList} />
+        <button className="btn-branch" onClick={() => handleFilter()}>
+          Filtrar por filial
+        </button>
+        <button className="btn-branch" onClick={() => getDefaultData()}>
+          Limpar Filtros
+        </button>
+      </div>
       {chartData && (
-        <BarChart
-          data={chartData}
-          options={branchOptionsChart}
-          headers={branchHeaders}
-        />
+        <div className='branch-chart'>
+          <BarChart
+            data={chartData}
+            options={branchOptionsChart}
+            headers={branchHeaders}
+          />
+        </div>
       )}
-    </>
+    </section>
   );
 }

@@ -1,0 +1,23 @@
+.filter-menu{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.filter-select{
+    color: black;
+    background-color: #d9d9d9;
+    border: none;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.filter-search{
+    color: black;
+    background-color: #d9d9d9;
+    border: none;
+    padding: 5px;
+    border-radius: 8px;
+}
