@@ -1,0 +1,23 @@
+.section-table {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+table {
+    border: 1px solid black;
+    padding: 15px;
+    background-color: #d9d9d9;
+}
+
+tbody {
+    background-color: white;
+}
+
+td {
+    padding: 10px;
+}
+
+.td-label {
+    font-weight: bold;
+}
