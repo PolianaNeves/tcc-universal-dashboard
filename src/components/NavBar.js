@@ -6,12 +6,12 @@ export default function NavBar(props) {
   return (
     <>
       <nav className='navbar'>
-        <Link to="/branch">Branch</Link>
-        <Link to="/ratings">Ratings</Link>
-        <Link to="/year">Year</Link>
-        <Link to="/timeseries">Time Series</Link>
-        <Link to="/frequencies">Frequencies</Link>
-        <Link to="/attractions">Attractions</Link>
+        <Link to="/branch">Filial</Link>
+        <Link to="/ratings">Pontuação</Link>
+        <Link to="/year">Ano</Link>
+        <Link to="/timeseries">Análise Temporal</Link>
+        <Link to="/frequencies">Frequência</Link>
+        <Link to="/attractions">Atração</Link>
         <Link to="/wordcloud">Nuvem de palavras</Link>
       </nav>
     </>

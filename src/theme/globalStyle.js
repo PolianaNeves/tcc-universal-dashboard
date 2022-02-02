@@ -18,6 +18,10 @@ const GlobalStyle = createGlobalStyle`
   .app-title {
     margin-bottom: 15px;
   }
+
+  .app-description {
+    margin-bottom: 15px;
+  }
   
   .filter-btn {
     background-color: #d9d9d9;

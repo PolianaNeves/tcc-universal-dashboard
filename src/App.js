@@ -9,7 +9,8 @@ function App() {
     <>
       <GlobalStyle />
       <div className="header">
-        <h1 className="app-title">Dashboard - Universal Reviews Analysis</h1>
+        <h1 className="app-title">Análise de Avaliações - Universal Studios</h1>
+        <h4 className='app-description'>Selecione os filtros para análise:</h4>
         <NavBar />
       </div>
       <Outlet />
