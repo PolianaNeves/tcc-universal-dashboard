@@ -105,6 +105,7 @@ export default function TimeSeriesPage(props) {
       </div>
       <div className='pre-charts'>
         {src && <img alt="time-series" src={src} />}
+        <h3>Visão detalhada do filtro: </h3>
         {detailsSrc && <img alt="time-series-details" src={detailsSrc} />}
       </div>
     </>
