@@ -80,7 +80,7 @@ export default function RatingsPage(props) {
 
   return (
     <>
-      <h1 className='page-title'>Ratings page</h1>
+      <h1 className='page-title'>Análise por Pontuação</h1>
       <div className='section-filter'>
         <FilterMenu selectList={ratingsFilterMenus.selectList} />
         <button className="filter-btn" onClick={() => handleFilter()}>

@@ -90,7 +90,7 @@ export default function WordcloudPage() {
 
   return (
     <>
-      <h1 className="page-title">WordcloudPage</h1>
+      <h1 className="page-title">Nuvem de Palavras</h1>
       <div className="section-filter">
         <FilterMenu selectList={wordcloudFilterMenus.selectList} />
         <button className="filter-btn" onClick={() => handleFilter()}>

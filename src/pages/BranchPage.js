@@ -84,7 +84,7 @@ export default function BranchPage(props) {
 
   return (
     <>
-      <h1 className="page-title">Branch page</h1>
+      <h1 className="page-title">Análise por Filial</h1>
       <div className="section-filter">
         <FilterMenu selectList={branchFilterMenus.selectList} />
         <button className="filter-btn" onClick={() => handleFilter()}>

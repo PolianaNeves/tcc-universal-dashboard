@@ -93,7 +93,7 @@ export default function TimeSeriesPage(props) {
 
   return (
     <>
-      <h1 className="page-title">TimeSeriesPage</h1>
+      <h1 className="page-title">Análise de Séries Temporais</h1>
       <div className="section-filter">
         <FilterMenu selectList={timeSeriesFilterMenus.selectList} />
         <button className="filter-btn" onClick={() => handleFilter()}>

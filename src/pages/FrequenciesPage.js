@@ -67,7 +67,7 @@ export default function FrequenciesPage(props) {
 
   return (
     <>
-      <h1 className="page-title">Frequencies page</h1>
+      <h1 className="page-title">Análise por Frequência</h1>
       <div className='section-filter'>
         <FilterMenu
           selectList={frequenciesFilterMenus.selectList}

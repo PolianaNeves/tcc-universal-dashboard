@@ -11,6 +11,21 @@ import api from "../services/api";
 export default function AttractionsPage(props) {
   const [chartData, setChartData] = useState(null);
 
+  const getDefaultData = async () => {
+    await api
+      .get(`/count/by/full/attraction`)
+      .then((response) => {
+        setChartData(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getDefaultData();
+  }, []);
+
   const callAttractionsServices = async (chosenBranch, chosenLabel) => {
     const isBranchSelected =
       chosenBranch !== "" &&
@@ -37,25 +52,55 @@ export default function AttractionsPage(props) {
         .catch((error) => {
           console.log(error);
         });
+    } else if (!isBranchSelected && isLabelSelected) {
+      await api
+        .get(`/count/${chosenLabel}/by/full/attraction`)
+        .then((response) => {
+          setChartData(response.data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      getDefaultData();
     }
   };
 
-  const handleFilter = () => {
+  const getFiltersValues = () => {
     var branchElement = document.getElementById(
       attractionsFilterMenus.selectList[0].id
     );
     var labelElement = document.getElementById(
       attractionsFilterMenus.selectList[1].id
     );
-    callAttractionsServices(branchElement.value, labelElement.value);
+    return { branch: branchElement, label: labelElement };
+  };
+
+  const handleFilter = () => {
+    const { branch, label } = getFiltersValues();
+    branch.value = attractionsFilterMenus.selectList[0].placeholder;
+    label.value = attractionsFilterMenus.selectList[1].placeholder;
+    callAttractionsServices(branch.value, label.value);
+  };
+
+  const clearFilters = () => {
+    const { branch, label } = getFiltersValues();
+    branch.value = attractionsFilterMenus.selectList[0].placeholder;
+    label.value = attractionsFilterMenus.selectList[1].placeholder;
+    getDefaultData();
   };
 
   return (
     <>
       <h1 className="page-title">Attractions page</h1>
-      <div className='section-filter'>
+      <div className="section-filter">
         <FilterMenu selectList={attractionsFilterMenus.selectList} />
-        <button className='filter-btn' onClick={() => handleFilter()}>Filtrar atrações</button>
+        <button className="filter-btn" onClick={() => handleFilter()}>
+          Filtrar atrações
+        </button>
+        <button className="filter-btn" onClick={() => clearFilters()}>
+          Limpar Filtros
+        </button>
       </div>
       {chartData && (
         <ColumnChart

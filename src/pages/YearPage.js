@@ -74,7 +74,7 @@ export default function YearPage(props) {
 
   return (
     <>
-      <h1 className="page-title">Year page</h1>
+      <h1 className="page-title">Análise por Ano</h1>
       <div className="section-filter">
         <FilterMenu selectList={yearFilterMenus.selectList} />
         <button className='filter-btn' onClick={() => handleFilter()}>Filtrar por Ano</button>
