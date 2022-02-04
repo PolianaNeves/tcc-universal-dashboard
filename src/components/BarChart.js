@@ -1,10 +1,9 @@
 import React from "react";
 import { Chart } from "react-google-charts";
-import { parseDataChart } from "../utils/utils";
+import { parseDataChart, parseDataToMultipleSeries } from "../utils/utils";
 
 export default function BarChart(props) {
-  const parsedData = parseDataChart(props.headers, props.data);
-
+  const parsedData = parseDataToMultipleSeries(props.headers, props.data)
   return (
     <Chart
       chartType="BarChart"

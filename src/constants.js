@@ -32,7 +32,7 @@ export const branchFilterMenus = {
   ]
 };
 
-export const branchHeaders = ["Filiais", "Avaliações"];
+export const branchHeaders = ["Filial", "Total", "Positivas", "Negativas"];
 
 
 export const ratingsOptionsChart = {
