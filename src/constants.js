@@ -16,6 +16,8 @@ export const branchOptionsChart = {
   },
 };
 
+
+
 export const branchFilterMenus = {
   selectList: [
     {
@@ -39,7 +41,14 @@ export const branchFilterMenus = {
 };
 
 export const branchHeaders = ["Filial", "Total", "Positivas", "Negativas"];
-
+export const branchPiePosHeaders = ["Filial", "Avaliações Positivas"]
+export const branchOptionsPosPieChart = {
+  title: "Percentual de Avaliações Positivas"
+}
+export const branchPieNegHeaders = ["Filial", "Avaliações Negativas"]
+export const branchOptionsNegPieChart = {
+  title: "Percentual de Avaliações Negativas"
+}
 
 export const ratingsOptionsChart = {
   title: "Quantidade x Pontuação da Avaliação",
