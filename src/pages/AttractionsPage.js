@@ -93,7 +93,7 @@ export default function AttractionsPage(props) {
 
   return (
     <>
-      <h1 className="page-title">Attractions page</h1>
+      <h1 className="page-title">Análise de atrações</h1>
       <div className="section-filter">
         <FilterMenu
           selectList={attractionsFilterMenus.selectList}
