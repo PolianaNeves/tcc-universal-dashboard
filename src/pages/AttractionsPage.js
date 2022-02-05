@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import BarChart from "../components/BarChart";
-import ColumnChart from "../components/ColumnChart";
 import FilterMenu from "../components/FilterMenu";
 import {
   attractionsFilterMenus,

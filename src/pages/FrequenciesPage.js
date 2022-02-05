@@ -74,6 +74,18 @@ export default function FrequenciesPage(props) {
     callFrequenciesServices(topElement.value, labelElement.value);
   };
 
+  const clearFilters = () => {
+    var topElement = document.getElementById(
+      frequenciesFilterMenus.searchList[0].id
+    );
+    var labelElement = document.getElementById(
+      frequenciesFilterMenus.selectList[0].id
+    );
+    topElement.value = ""
+    labelElement.value = frequenciesFilterMenus.selectList[0].placeholder
+    getDefaultData()
+  }
+
   return (
     <>
       <h1 className="page-title">Análise por Frequência</h1>
@@ -83,7 +95,7 @@ export default function FrequenciesPage(props) {
           searchList={frequenciesFilterMenus.searchList}
         />
         <button className='filter-btn' onClick={() => handleFilter()}>Filtrar termos</button>
-        <button className='filter-btn' onClick={() => getDefaultData()}>Limpar Filtros</button>
+        <button className='filter-btn' onClick={() => clearFilters()}>Limpar Filtros</button>
       </div>
 
       <Table headers={frequenciesTableHeaders} rows={tableData} />
