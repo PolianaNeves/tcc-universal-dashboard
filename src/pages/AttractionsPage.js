@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import BarChart from "../components/BarChart";
 import ColumnChart from "../components/ColumnChart";
 import FilterMenu from "../components/FilterMenu";
 import {
@@ -10,83 +11,84 @@ import api from "../services/api";
 
 export default function AttractionsPage(props) {
   const [chartData, setChartData] = useState(null);
+  const [responseData, setResponseData] = useState(null);
 
-  const getDefaultData = async () => {
+  const callApiService = async () => {
     await api
-      .get(`/count/by/full/attraction`)
+      .get(`/count/by/attraction`)
       .then((response) => {
-        setChartData(response.data.data);
+        const responseData = response.data.data;
+        const defaultData = responseData.filter(
+          (element) => element.branch === "full"
+        );
+        setChartData(defaultData[0].data);
+        setResponseData(responseData);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
+  const getDefaultData = () => {
+    const defaultData = responseData.filter(
+      (element) => element.branch === "full"
+    );
+    setChartData(defaultData[0].data);
+  };
+
   useEffect(() => {
-    getDefaultData();
+    callApiService();
   }, []);
 
-  const callAttractionsServices = async (chosenBranch, chosenLabel) => {
+  const callAttractionsServices = async (chosenBranch, chosenTopN) => {
     const isBranchSelected =
       chosenBranch !== "" &&
       chosenBranch !== attractionsFilterMenus.selectList[0].placeholder;
-    const isLabelSelected =
-      chosenLabel !== "" &&
-      chosenLabel !== attractionsFilterMenus.selectList[1].placeholder;
+    const isTopNFilled =
+      chosenTopN !== "" &&
+      chosenTopN !== attractionsFilterMenus.searchList[0].placeholder;
 
-    if (isBranchSelected && isLabelSelected) {
-      await api
-        .get(`/count/${chosenLabel}/by/${chosenBranch}/attraction`)
-        .then((response) => {
-          setChartData(response.data.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else if (isBranchSelected && !isLabelSelected) {
-      await api
-        .get(`/count/by/${chosenBranch}/attraction`)
-        .then((response) => {
-          setChartData(response.data.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else if (!isBranchSelected && isLabelSelected) {
-      await api
-        .get(`/count/${chosenLabel}/by/full/attraction`)
-        .then((response) => {
-          setChartData(response.data.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    if (isBranchSelected && !isTopNFilled) {
+      const filteredBranch = responseData.filter(
+        (object) => object.branch === chosenBranch
+      );
+      setChartData(filteredBranch[0].data);
+    } else if (isBranchSelected && isTopNFilled) {
+      const filteredBranch = responseData.filter(
+        (object) => object.branch === chosenBranch
+      );
+      const firstN = filteredBranch[0].data.slice(0, chosenTopN);
+      setChartData(firstN);
+    } else if (!isBranchSelected && isTopNFilled) {
+      const filteredBranch = responseData.filter(
+        (object) => object.branch === "full"
+      );
+      const firstN = filteredBranch[0].data.slice(0, chosenTopN);
+      setChartData(firstN);
     } else {
       getDefaultData();
     }
   };
 
-  const getFiltersValues = () => {
+  const handleFilter = () => {
     var branchElement = document.getElementById(
       attractionsFilterMenus.selectList[0].id
     );
-    var labelElement = document.getElementById(
-      attractionsFilterMenus.selectList[1].id
+    var attractionsElement = document.getElementById(
+      attractionsFilterMenus.searchList[0].id
     );
-    return { branch: branchElement, label: labelElement };
-  };
-
-  const handleFilter = () => {
-    const { branch, label } = getFiltersValues();
-    branch.value = attractionsFilterMenus.selectList[0].placeholder;
-    label.value = attractionsFilterMenus.selectList[1].placeholder;
-    callAttractionsServices(branch.value, label.value);
+    callAttractionsServices(branchElement.value, attractionsElement.value);
   };
 
   const clearFilters = () => {
-    const { branch, label } = getFiltersValues();
-    branch.value = attractionsFilterMenus.selectList[0].placeholder;
-    label.value = attractionsFilterMenus.selectList[1].placeholder;
+    var branchElement = document.getElementById(
+      attractionsFilterMenus.selectList[0].id
+    );
+    branchElement.value = attractionsFilterMenus.selectList[0].placeholder;
+    var attractionsElement = document.getElementById(
+      attractionsFilterMenus.searchList[0].id
+    );
+    attractionsElement.value = ""
     getDefaultData();
   };
 
@@ -94,7 +96,10 @@ export default function AttractionsPage(props) {
     <>
       <h1 className="page-title">Attractions page</h1>
       <div className="section-filter">
-        <FilterMenu selectList={attractionsFilterMenus.selectList} />
+        <FilterMenu
+          selectList={attractionsFilterMenus.selectList}
+          searchList={attractionsFilterMenus.searchList}
+        />
         <button className="filter-btn" onClick={() => handleFilter()}>
           Filtrar atrações
         </button>
@@ -103,7 +108,7 @@ export default function AttractionsPage(props) {
         </button>
       </div>
       {chartData && (
-        <ColumnChart
+        <BarChart
           data={chartData}
           options={attractionsOptionsChart}
           headers={attractionsHeaders}

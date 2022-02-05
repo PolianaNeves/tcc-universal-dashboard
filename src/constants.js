@@ -161,19 +161,17 @@ export const attractionsFilterMenus = {
         {label: "Universal Studios Singapore", value: "singapore"},
         {label: "Universal Studios Japan", value: "japan"}
       ]
-    },
+    }
+  ],
+  searchList: [
     {
-      id: "label-selection",
-      placeholder: "Selecione o tipo de avaliação desejada...",
-      options: [
-        {label: "Positiva", value: "pos"},
-        {label: "Negativa", value: "neg"}
-      ]
+      id: "top_attractions",
+      placeholder: "Quantidade de atrações..."
     }
   ]
 };
 
-export const attractionsHeaders = ["Avaliações", "Atração"];
+export const attractionsHeaders = ["Atração", "Total", "Positivas", "Negativas"];
 
 export const timeSeriesFilterMenus = {
   selectList: [
