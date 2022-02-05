@@ -14,7 +14,6 @@ export default function BranchPage(props) {
     await api
       .get("/count/by/branch")
       .then((response) => {
-        console.log(response.data.data)
         setChartData(response.data.data);
       })
       .catch((error) => {

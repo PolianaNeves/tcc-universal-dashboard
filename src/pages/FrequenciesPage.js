@@ -9,7 +9,7 @@ export default function FrequenciesPage(props) {
 
   const getDefaultData = async () => {
     await api
-      .get("/top/50/all/terms")
+      .get("/top/20/all/terms")
       .then((response) => {
         setTableData(response.data.data);
       })
@@ -44,6 +44,15 @@ export default function FrequenciesPage(props) {
     } else if (isTopSelected && !isLabelSelected) {
       await api
         .get(`/top/${chosenTop}/all/terms`)
+        .then((response) => {
+          setTableData(response.data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (!isTopSelected && isLabelSelected){
+      await api
+        .get(`/top/10/${chosenLabel}/terms`)
         .then((response) => {
           setTableData(response.data.data);
         })

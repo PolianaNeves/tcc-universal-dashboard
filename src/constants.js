@@ -1,3 +1,9 @@
+export const DEFAULT_BRANCH = "Todas";
+export const FLORIDA_BRANCH = "Universal Studios Florida";
+export const JAPAN_BRANCH = "Universal Studios Japan";
+export const SINGAPORE_BRANCH = "Universal Studios Singapore";
+
+
 export const branchOptionsChart = {
   title: "Quantidade de Avaliações x Filial",
   chartArea: { width: "50%" },
@@ -53,25 +59,18 @@ export const ratingsFilterMenus = {
       id: "rating-selection",
       placeholder: "Selecione a pontuação desejada...",
       options: [
-        {label: "1 estrela", value: "1"},
-        {label: "2 estrelas", value: "2"},
-        {label: "3 estrelas", value: "3"},
-        {label: "4 estrelas", value: "4"},
-        {label: "5 estrelas", value: "5"}
-      ]
-    },
-    {
-      id: "label-selection",
-      placeholder: "Selecione o tipo de avaliação desejada...",
-      options: [
-        {label: "Positiva", value: "positive"},
-        {label: "Negativa", value: "negative"}
+        {label: "1 estrela", value: "1.0"},
+        {label: "2 estrelas", value: "2.0"},
+        {label: "3 estrelas", value: "3.0"},
+        {label: "4 estrelas", value: "4.0"},
+        {label: "5 estrelas", value: "5.0"}
       ]
     }
   ]
 };
 
-export const ratingsHeaders = ["Pontuação", "Avaliações"];
+export const ratingsHeaders = ["Pontuação", "Total", "Positivas", "Negativas"];
+
 
 export const yearOptionsChart = {
   title: "Quantidade de Avaliações x Ano da Avaliação",
@@ -113,19 +112,11 @@ export const yearFilterMenus = {
         {label: "2021", value: "2021"},
         {label: "2022", value: "2022"}
       ]
-    },
-    {
-      id: "label-selection",
-      placeholder: "Selecione o tipo de avaliação desejada...",
-      options: [
-        {label: "Positiva", value: "positive"},
-        {label: "Negativa", value: "negative"}
-      ]
     }
   ]
 };
 
-export const yearHeaders = ["Ano", "Avaliações"];
+export const yearHeaders = ["Ano", "Total", "Positivas", "Negativas"];
 
 export const frequenciesFilterMenus = {
   selectList: [

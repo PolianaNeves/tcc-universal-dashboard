@@ -1,76 +1,71 @@
 import React, { useEffect, useState } from "react";
 import BarChart from "../components/BarChart";
 import FilterMenu from "../components/FilterMenu";
-import { yearOptionsChart, yearFilterMenus, yearHeaders } from "../constants";
+import { yearOptionsChart, yearFilterMenus, yearHeaders, DEFAULT_BRANCH } from "../constants";
 import api from "../services/api";
 
 export default function YearPage(props) {
   const [chartData, setChartData] = useState(null);
+  const [responseData, setResponseData] = useState(null);
 
-  const getDefaultData = async () => {
+  const callApiService = async () => {
     await api
       .get("/count/by/year")
       .then((response) => {
-        setChartData(response.data.data);
+        const responseData = response.data.data
+        const filteredYear = responseData.filter(
+          (object) => object.key == DEFAULT_BRANCH
+        );
+        setChartData(filteredYear[0].data);
+        setResponseData(responseData);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
+  const getDefaultData = () => {
+    const filteredYear = responseData.filter(
+      (object) => object.key == DEFAULT_BRANCH
+    );
+    setChartData(filteredYear[0].data);
+  };
+
   useEffect(() => {
     if (chartData == null) {
-      getDefaultData();
+      callApiService();
     }
   }, [chartData]);
 
-  const callYearServices = async (chosenYear, chosenLabel) => {
-    const isYearSelected =
-      chosenYear !== "" &&
-      chosenYear !== yearFilterMenus.selectList[0].placeholder;
-    const isLabelSelected =
-      chosenLabel !== "" &&
-      chosenLabel !== yearFilterMenus.selectList[1].placeholder;
+  const callRatingsServices = async (chosenRating) => {
+    const isRatingSelected =
+      chosenRating !== "" &&
+      chosenRating !== yearFilterMenus.selectList[0].placeholder;
 
-    if (isYearSelected && isLabelSelected) {
-      await api
-        .get(`/${chosenLabel}/count/by/year/${chosenYear}`)
-        .then((response) => {
-          setChartData([response.data]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else if (isYearSelected && !isLabelSelected) {
-      await api
-        .get(`/count/by/year/${chosenYear}`)
-        .then((response) => {
-          setChartData([response.data]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else if (!isYearSelected && isLabelSelected) {
-      await api
-        .get(`/${chosenLabel}/count/by/year`)
-        .then((response) => {
-          setChartData(response.data.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    if (isRatingSelected) {
+      const filteredYear = responseData.filter(
+        (object) => object.key == chosenRating
+      );
+      setChartData(filteredYear[0].data);
     } else {
       getDefaultData();
     }
   };
 
   const handleFilter = () => {
-    var yearElement = document.getElementById(yearFilterMenus.selectList[0].id);
-    var labelElement = document.getElementById(
-      yearFilterMenus.selectList[1].id
+    var ratingsElement = document.getElementById(
+      yearFilterMenus.selectList[0].id
     );
-    callYearServices(yearElement.value, labelElement.value);
+    callRatingsServices(ratingsElement.value);
   };
+
+  const clearFilters = () => {
+    var ratingsElement = document.getElementById(
+      yearFilterMenus.selectList[0].id
+    );
+    ratingsElement.value = yearFilterMenus.selectList[0].placeholder
+    getDefaultData()
+  }
 
   return (
     <>
