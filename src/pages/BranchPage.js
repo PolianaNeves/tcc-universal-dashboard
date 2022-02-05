@@ -5,7 +5,6 @@ import {
   branchHeaders,
 } from "../constants";
 import api from "../services/api";
-import "./BranchPage.css";
 
 export default function BranchPage(props) {
   const [chartData, setChartData] = useState(null);
