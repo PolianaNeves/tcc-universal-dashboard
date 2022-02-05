@@ -14,7 +14,7 @@ export default function YearPage(props) {
       .then((response) => {
         const responseData = response.data.data
         const filteredYear = responseData.filter(
-          (object) => object.key == DEFAULT_BRANCH
+          (object) => object.key === DEFAULT_BRANCH
         );
         setChartData(filteredYear[0].data);
         setResponseData(responseData);
@@ -26,7 +26,7 @@ export default function YearPage(props) {
 
   const getDefaultData = () => {
     const filteredYear = responseData.filter(
-      (object) => object.key == DEFAULT_BRANCH
+      (object) => object.key === DEFAULT_BRANCH
     );
     setChartData(filteredYear[0].data);
   };
@@ -44,7 +44,7 @@ export default function YearPage(props) {
 
     if (isRatingSelected) {
       const filteredYear = responseData.filter(
-        (object) => object.key == chosenRating
+        (object) => object.key === chosenRating
       );
       setChartData(filteredYear[0].data);
     } else {
@@ -53,17 +53,17 @@ export default function YearPage(props) {
   };
 
   const handleFilter = () => {
-    var ratingsElement = document.getElementById(
+    var yearElement = document.getElementById(
       yearFilterMenus.selectList[0].id
     );
-    callRatingsServices(ratingsElement.value);
+    callRatingsServices(yearElement.value);
   };
 
   const clearFilters = () => {
-    var ratingsElement = document.getElementById(
+    var yearElement = document.getElementById(
       yearFilterMenus.selectList[0].id
     );
-    ratingsElement.value = yearFilterMenus.selectList[0].placeholder
+    yearElement.value = yearFilterMenus.selectList[0].placeholder
     getDefaultData()
   }
 
@@ -73,7 +73,7 @@ export default function YearPage(props) {
       <div className="section-filter">
         <FilterMenu selectList={yearFilterMenus.selectList} />
         <button className='filter-btn' onClick={() => handleFilter()}>Filtrar por Ano</button>
-        <button className='filter-btn' onClick={() => getDefaultData()}>Limpar Filtros</button>
+        <button className='filter-btn' onClick={() => clearFilters()}>Limpar Filtros</button>
       </div>
       {chartData && (
         <BarChart

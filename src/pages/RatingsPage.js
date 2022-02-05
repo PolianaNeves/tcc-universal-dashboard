@@ -19,7 +19,7 @@ export default function RatingsPage(props) {
       .then((response) => {
         const responseData = response.data.data
         const filteredRating = responseData.filter(
-          (object) => object.key == DEFAULT_BRANCH
+          (object) => object.key === DEFAULT_BRANCH
         );
         setChartData(filteredRating[0].data);
         setResponseData(responseData);
@@ -31,7 +31,7 @@ export default function RatingsPage(props) {
 
   const getDefaultData = () => {
     const filteredRating = responseData.filter(
-      (object) => object.key == DEFAULT_BRANCH
+      (object) => object.key === DEFAULT_BRANCH
     );
     setChartData(filteredRating[0].data);
   };
@@ -49,7 +49,7 @@ export default function RatingsPage(props) {
 
     if (isRatingSelected) {
       const filteredRating = responseData.filter(
-        (object) => object.key == chosenRating
+        (object) => object.key === chosenRating
       );
       setChartData(filteredRating[0].data);
     } else {

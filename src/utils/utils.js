@@ -1,5 +1,3 @@
-import { FLORIDA_BRANCH, JAPAN_BRANCH, SINGAPORE_BRANCH, DEFAULT_BRANCH } from '../constants';
-
 export const parseDataChart = (header, data) => {
     const newDataList = []
     newDataList.push(header);
